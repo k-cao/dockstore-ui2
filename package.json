@@ -52,7 +52,6 @@
     "bodybuilder": "^2.2.17",
     "bootstrap": "^3.4.1",
     "bootstrap-social": "^5.1.1",
-    "core-js": "^3.2.1",
     "cytoscape": "^3.10.1",
     "cytoscape-dagre": "^2.2.2",
     "cytoscape-popper": "^1.0.4",
