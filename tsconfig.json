@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "noImplicitAny": true,
     "downlevelIteration": true,
     "module": "esnext",
     "outDir": "./dist/out-tsc",

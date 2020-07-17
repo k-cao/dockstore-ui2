@@ -39,7 +39,7 @@ export class AddTagComponent extends Base implements OnInit, AfterViewChecked {
   addTagForm: NgForm;
   @ViewChild('addTagForm', { static: true }) currentForm: NgForm;
   public DescriptorType = ToolDescriptor.TypeEnum;
-  public tool;
+  public tool: DockstoreTool;
   public formErrors = formErrors;
   public validationPatterns = validationDescriptorPatterns;
   public trackByIndex: number;
