@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Base } from '../shared/base';
 import { ImageProviderService } from '../shared/image-provider.service';
+import { ExtendedDockstoreTool } from '../shared/models/ExtendedDockstoreTool';
+import { ExtendedWorkflow } from '../shared/models/ExtendedWorkflow';
 import { ProviderService } from '../shared/provider.service';
 import { DockstoreTool, Organization, Workflow } from '../shared/swagger';
 import { UserQuery } from '../shared/user/user.query';
@@ -31,7 +33,7 @@ export class StarredEntriesComponent extends Base implements OnInit {
     this.userQuery.user$.subscribe(user => (this.user = user));
     this.usersService.getStarredTools().subscribe(starredTool => {
       this.starredTools = starredTool.filter((entry: DockstoreTool) => entry.is_published);
-      this.starredTools.forEach(tool => {
+      this.starredTools.forEach((tool: ExtendedDockstoreTool) => {
         if (!tool.providerUrl) {
           this.providerService.setUpProvider(tool);
         }
@@ -42,7 +44,7 @@ export class StarredEntriesComponent extends Base implements OnInit {
     });
     this.usersService.getStarredWorkflows().subscribe(starredWorkflow => {
       this.starredWorkflows = starredWorkflow.filter((entry: Workflow) => entry.is_published);
-      this.starredWorkflows.forEach(workflow => {
+      this.starredWorkflows.forEach((workflow: ExtendedWorkflow) => {
         if (!workflow.providerUrl) {
           this.providerService.setUpProvider(workflow);
         }

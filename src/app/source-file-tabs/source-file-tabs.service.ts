@@ -29,7 +29,7 @@ export class SourceFileTabsService {
    * @param files
    */
   getFileTypes(files: SourceFile[]): SourceFile.TypeEnum[] {
-    const fileTypes = [];
+    const fileTypes: Array<SourceFile.TypeEnum> = [];
     files.forEach((file: SourceFile) => {
       if (!fileTypes.includes(file.type)) {
         fileTypes.push(file.type);

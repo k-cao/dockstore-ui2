@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSelectChange } from '@angular/material/select';
 import { Observable } from 'rxjs';
 import { Collection, OrganizationUser } from '../../../shared/swagger';
 import { AddEntryQuery } from '../state/add-entry.query';
@@ -34,7 +35,7 @@ export class AddEntryComponent implements OnInit {
    * Called when organization is selected from dropdown
    * @param event event.value is the id of the organization to add
    */
-  onOrganizationChange(event) {
+  onOrganizationChange(event: MatSelectChange) {
     this.selectedCollectionId = null;
     this.addEntryService.updateCollections(event.value);
   }

@@ -229,7 +229,7 @@ export class LaunchThirdPartyComponent extends Base implements OnChanges, OnInit
     }
   }
 
-  private sevenBridgesTooltip(hasContent: boolean, hasHttpImports, platform: string): string {
+  private sevenBridgesTooltip(hasContent: boolean, hasHttpImports: boolean | any, platform: string): string {
     if (!hasContent) {
       return 'The CWL has no content.';
     }
@@ -243,7 +243,7 @@ export class LaunchThirdPartyComponent extends Base implements OnChanges, OnInit
     return this.workflow && this.workflow.gitUrl && this.workflow.gitUrl.startsWith('git@github.com');
   }
 
-  private terraBasedPlatformTooltip(hasContent: boolean, hasFileImports, platform: string): string {
+  private terraBasedPlatformTooltip(hasContent: boolean, hasFileImports: boolean, platform: string): string {
     if (!hasContent) {
       return 'The WDL has no content.';
     }

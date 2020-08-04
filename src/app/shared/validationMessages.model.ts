@@ -14,27 +14,14 @@
  *    limitations under the License.
  */
 
-interface FormErrors {
-  cwlPath: string;
-  wdlPath: string;
-  dockerfilePath: string;
-  gitPath: string;
-  imagePath: string;
-  label: string;
-  cwlTestParameterFilePath: string;
-  wdlTestParameterFilePath: string;
-  testParameterFilePath: string;
-  toolName: string;
-  email: string;
-  reference: string;
-  versionTag: string;
-  workflow_path: string;
-  workflowName: string;
-  amazonDockerRegistryPath: string;
-  sevenBridgesDockerRegistryPath: string;
+interface ValidationMessagesField {
+  required?: string;
+  minlength?: string;
+  maxlength: string;
+  pattern?: string;
 }
 
-export const formErrors: FormErrors = {
+export const formErrors: { [key: string]: string } = {
   cwlPath: '',
   wdlPath: '',
   dockerfilePath: '',
@@ -83,7 +70,7 @@ export const validationDescriptorPatterns = {
   sevenBridgesDockerRegistryPath: '^([a-zA-Z0-9]+-)?images.sbgenomics.com'
 };
 
-export const validationMessages = {
+export const validationMessages: { [key: string]: ValidationMessagesField } = {
   cwlPath: {
     required: 'This field cannot be empty.',
     minlength: 'Descriptor Path is too short. (Minimum 3 characters)',

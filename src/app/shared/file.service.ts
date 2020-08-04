@@ -18,7 +18,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ga4ghPath, ga4ghWorkflowIdPrefix } from './constants';
 import { DescriptorTypeCompatService } from './descriptor-type-compat.service';
 import { Dockstore } from './dockstore.model';
-import { SourceFile, Tag, ToolDescriptor, WorkflowVersion } from './swagger';
+import { SourceFile, Tag, ToolDescriptor, ToolFile, WorkflowVersion } from './swagger';
 
 const wdlImportHttpRegEx: RegExp = new RegExp(/^\s*import\s+"?https?/, 'm');
 const cwlImportHttpRegEx: RegExp = new RegExp(/^[^#]+((run)|(\$((import)|(include)|(mixin))))\s*:\s+\"?https?/, 'm');
@@ -83,7 +83,7 @@ export class FileService {
   }
 
   // Get the path of the file
-  getFilePath(file): string {
+  getFilePath(file: ToolFile): string {
     if (file != null) {
       return file.path;
     }

@@ -34,7 +34,7 @@ export class SelectComponent implements OnChanges {
     this.obj = this.default;
   }
 
-  changedSelect(obj) {
+  changedSelect(obj: any) {
     this.select.emit(obj);
   }
 }

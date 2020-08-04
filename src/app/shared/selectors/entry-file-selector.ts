@@ -23,7 +23,7 @@ import { FilesService } from '../../workflow/files/state/files.service';
 import { ga4ghWorkflowIdPrefix } from '../constants';
 import { FileService } from '../file.service';
 import { GA4GHFilesService } from '../ga4gh-files/ga4gh-files.service';
-import { FileWrapper, GA4GHService, Tag, ToolDescriptor, ToolFile, WorkflowVersion } from '../swagger';
+import { FileWrapper, GA4GHService, SourceFile, Tag, ToolDescriptor, ToolFile, WorkflowVersion } from '../swagger';
 
 /**
  * Abstract class to be implemented by components that have select boxes for a given entry and version
@@ -37,7 +37,7 @@ export abstract class EntryFileSelector implements OnDestroy {
   protected validDescriptors: Array<any>;
   public nullDescriptors = false;
   public filePath: string;
-  public currentFile;
+  public currentFile: any;
   public files: Array<ToolFile>;
   public published$: Observable<boolean>;
   public downloadFilePath: string;
@@ -51,7 +51,7 @@ export abstract class EntryFileSelector implements OnDestroy {
 
   abstract getDescriptors(version): Array<any>;
   abstract getValidDescriptors(version): Array<any>;
-  abstract getFiles(descriptor): Observable<any>;
+  abstract getFiles(descriptor: ToolDescriptor.TypeEnum): Observable<any>;
 
   constructor(
     protected fileService: FileService,
