@@ -3,7 +3,7 @@
   "version": "2.3.0",
   "license": "Apache License 2.0",
   "config": {
-    "webservice_version": "https://app.circleci.com/pipelines/github/dockstore/dockstore/5070/workflows/55ba7a95-4a8b-4fae-ba7e-9385f809f591/jobs/6585/artifacts"
+    "webservice_version": "https://app.circleci.com/pipelines/github/dockstore/dockstore/5099/workflows/e9654aba-81f6-4ab1-8ea9-5193855b9392/jobs/6704/artifacts"
   },
   "scripts": {
     "ng": "npx ng",
