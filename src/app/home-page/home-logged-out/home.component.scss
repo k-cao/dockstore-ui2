@@ -120,12 +120,20 @@ h3 {
   color: mat.get-color-from-palette($dockstore-app-warn, darker);
 }
 
-// Style home search mat-form-field
-// Make mat-form-field match home search bar, could look into more solutions
-::ng-deep .home-field .mat-form-field-wrapper {
-  padding-bottom: 0;
-}
-::ng-deep .home-field .mat-form-field-infix {
-  padding: 0.8em 0 0.8em 0;
-  border-top: 0em;
+// Style home search mat-form-field which is vastly different from all other form fields on the site due to the accented border on a non-white background
+::ng-deep .search-background .landing-search {
+  max-width: 600px;
+  background: white;
+  color: black;
+  .mat-form-field-wrapper {
+    // Removing the padding because we don't need hint
+    padding-bottom: 0;
+    // Material expects to have some extra space from the form field with `margin: .25em 0;`
+    // However, we have none because of the accent border surrounding the form field
+    margin: 0;
+  }
+  .mat-form-field-infix {
+    // Overriding the default `padding: 1em 0 1em 0;` and making it smaller to align with mocks
+    padding: 0.5em 0;
+  }
 }
