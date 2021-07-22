@@ -51,4 +51,8 @@ export class BasicSearchComponent extends Base implements OnInit {
       height: 'auto',
     });
   }
+
+  clearSearch() {
+    this.searchFormControl.setValue('');
+  }
 }

@@ -47,12 +47,13 @@
           </button>
         </div>
       </div>
-      <div class="search-holder" fxFlex>
+      <div fxFlex>
         <div class="search-background">
-          <mat-form-field appearance="none" class="home-field fully-rounded landing-search w-100">
-            <input matInput id="searchBar" aria-label="Search" #search placeholder="Search..." (keyup.enter)="goToSearch(search.value)" />
+          <mat-form-field appearance="outline" class="w-100 landing-search fully-rounded">
+            <mat-icon class="search-icon" matPrefix>search</mat-icon>
+            <input #search matInput id="searchBar" placeholder="Search..." (keyup.enter)="goToSearch(search.value)" />
             <button mat-button *ngIf="search.value" matSuffix mat-icon-button (click)="search.value = ''">
-              <mat-icon inline="true">close</mat-icon>
+              <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
         </div>

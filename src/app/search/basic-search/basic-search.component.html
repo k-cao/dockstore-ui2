@@ -13,7 +13,7 @@
       type="text"
       data-cy="basic-search"
     />
-    <button mat-button *ngIf="search.value" matSuffix mat-icon-button (click)="search.value = ''">
+    <button mat-button *ngIf="search.value" matSuffix mat-icon-button (click)="clearSearch()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>

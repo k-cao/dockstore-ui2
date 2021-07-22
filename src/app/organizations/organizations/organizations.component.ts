@@ -103,4 +103,8 @@ export class OrganizationsComponent extends Base implements OnInit {
     }
     this.pagedOrganizations = organizations.slice(startIndex, endIndex);
   }
+
+  clearSearch() {
+    this.organizationSearchForm.get('name').setValue('');
+  }
 }
