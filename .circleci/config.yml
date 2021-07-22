@@ -184,18 +184,13 @@ jobs:
   local_smoke_tests:
     executor: integration_test_exec
     working_directory: ~/repo
-    docker:
-      - image: circleci/buildpack-deps:18.04-browsers
-        auth:
-          username: dockstoretestuser
-          password: $DOCKERHUB_PASSWORD
     steps:
       - setup_integration_test
       - restore_cache:
           key: cypress-cache-{{ .Environment.CACHE_VERSION }}-{{ checksum "./package-lock.json" }}
       - run:
           name: Run local smoke tests (no auth)
-          command: bash -i -c 'npm run test-local-no-auth'
+          command: bash -i -c 'npx cypress run --record --reporter junit -c baseUrl=http://localhost:4200 -s \"cypress/integration/smokeTests/devOnly/monitor.ts,cypress/integration/smokeTests/devOnly/basic-enduser.ts,cypress/integration/smokeTests/devOnly/search.ts,cypress/integration/smokeTests/sharedTests/monitor.ts,cypress/integration/smokeTests/sharedTests/basic-enduser.ts,cypress/integration/smokeTests/sharedTests/search.ts\"'
           environment:
             MOCHA_FILE: nightly-test-results/junit/test-local-smoke-no-auth-[hash].xml
           when: always
