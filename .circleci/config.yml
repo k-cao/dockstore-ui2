@@ -182,6 +182,7 @@ jobs:
           when: always
       - upload_artifacts
   local_smoke_tests:
+    executor: integration_test_exec
     working_directory: ~/repo
     docker:
       - image: circleci/buildpack-deps:18.04-browsers
