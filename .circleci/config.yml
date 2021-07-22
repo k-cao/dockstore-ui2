@@ -190,7 +190,7 @@ jobs:
           key: cypress-cache-{{ .Environment.CACHE_VERSION }}-{{ checksum "./package-lock.json" }}
       - run:
           name: Run local smoke tests (no auth)
-          command: bash -i -c 'npx cypress run --record --reporter junit -c baseUrl=http://localhost:4200 --spec cypress/integration/sharedTests/monitor.ts'
+          command: bash -i -c 'npx cypress run --record --reporter junit -c baseUrl=http://localhost:4200 --spec cypress/integration/smokeTests/sharedTests/monitor.ts'
           environment:
             MOCHA_FILE: nightly-test-results/junit/test-local-smoke-no-auth-[hash].xml
           when: always
