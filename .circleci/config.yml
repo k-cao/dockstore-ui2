@@ -189,6 +189,7 @@ jobs:
           username: dockstoretestuser
           password: $DOCKERHUB_PASSWORD
     steps:
+      - setup_nightly_tests
       - run:
           name: Run local smoke tests (no auth)
           command: bash -i -c 'npm run test-local-no-auth'
