@@ -189,12 +189,15 @@ jobs:
           username: dockstoretestuser
           password: $DOCKERHUB_PASSWORD
     steps:
-      - setup_nightly_tests
+      - setup_integration_test
+      - restore_cache:
+          key: cypress-cache-{{ .Environment.CACHE_VERSION }}-{{ checksum "./package-lock.json" }}
       - run:
           name: Run local smoke tests (no auth)
           command: bash -i -c 'npm run test-local-no-auth'
           environment:
             MOCHA_FILE: nightly-test-results/junit/test-local-smoke-no-auth-[hash].xml
+          when: always
   upload_to_s3:
     working_directory: ~/repo
     docker:
