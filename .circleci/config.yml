@@ -181,6 +181,19 @@ jobs:
             MOCHA_FILE: integration-tests/test-results/junit/test-results-[hash].xml
           when: always
       - upload_artifacts
+  local_smoke_tests:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/buildpack-deps:18.04-browsers
+        auth:
+          username: dockstoretestuser
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - run:
+          name: Run local smoke tests (no auth)
+          command: bash -i -c 'npm run test-local-no-auth'
+          environment:
+            MOCHA_FILE: nightly-test-results/junit/test-local-smoke-no-auth-[hash].xml
   upload_to_s3:
     working_directory: ~/repo
     docker:
@@ -271,12 +284,21 @@ workflows:
             - lint_license_unit_test_coverage
           context:
             - dockerhub
+      - local_smoke_tests:
+          filters:
+            tags:
+              only: /.*/
+          requires:
+            - lint_license_unit_test_coverage
+          context:
+            - dockerhub
       # Upload builds for tags and branches to s3.
       - upload_to_s3:
           requires:
             - integration_test_1
             - integration_test_2
             - integration_test_3
+            - local_smoke_tests
           filters:
             tags:
               only: /.*/
