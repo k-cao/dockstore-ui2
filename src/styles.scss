@@ -900,6 +900,10 @@ app-sidebar-accordion
   background: #26bfa5 !important;
 }
 
+.service-tab-group.mat-primary .mat-ink-bar {
+  background: #ff6c44 !important;
+}
+
 .purple-tab-group.mat-primary .mat-ink-bar {
   background: #3f51b5 !important;
 }
@@ -1108,4 +1112,38 @@ hr {
 // Align the floating text in a mat form if it's part of a radio group. Gets out of alignment because of styles above.
 .mat-radio-button .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
   top: 1.8em;
+}
+
+.tab-display {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  background-color: #e0e0e0;
+}
+
+.info.span {
+  font-size: 10px;
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  height: auto;
+  color: mat-color($dockstore-app-accent);
+  padding: 0 !important;
+}
+
+.info {
+  font-size: 12px;
+  line-height: 2rem;
+}
+
+.info-overflow {
+  // Hide overflow if longer than 1 line
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: initial;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
 }

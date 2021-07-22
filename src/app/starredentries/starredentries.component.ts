@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Base } from '../shared/base';
 import { ImageProviderService } from '../shared/image-provider.service';
 import { ProviderService } from '../shared/provider.service';
@@ -14,10 +15,14 @@ import { UsersService } from './../shared/swagger/api/users.service';
 export class StarredEntriesComponent extends Base implements OnInit {
   starredTools: any;
   starredWorkflows: any;
+  starredServices: any;
   starredOrganizations: Array<Organization>;
+  // collectionsLength$: Observable<number>;
   user: any;
   starGazersClicked = false;
   organizationStarGazersClicked = false;
+  public selectedIndex$: Observable<number>;
+
   constructor(
     private userQuery: UserQuery,
     private imageProviderService: ImageProviderService,
@@ -48,7 +53,6 @@ export class StarredEntriesComponent extends Base implements OnInit {
         }
       });
     });
-
     this.usersService.getStarredOrganizations().subscribe((starredOrganizations) => {
       this.starredOrganizations = starredOrganizations;
     });
