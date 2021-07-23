@@ -18,7 +18,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Logout } from '../loginComponents/logout';
-import { currentPrivacyPolicyVersion, currentTOSVersion } from '../shared/constants';
+import { acceptedPrivacyPolicyVersion, acceptedTOSVersion, currentPrivacyPolicyVersion, currentTOSVersion } from '../shared/constants';
 import { Dockstore } from '../shared/dockstore.model';
 import { toExtendSite } from '../shared/helpers';
 import { UserQuery } from '../shared/user/user.query';
@@ -63,6 +63,10 @@ export class NavbarComponent extends Logout implements OnInit {
   ngOnInit() {
     this.userQuery.user$.pipe(takeUntil(this.ngUnsubscribe)).subscribe((user) => {
       this.user = user;
+      if (this.user) {
+        localStorage.setItem(acceptedTOSVersion, user.tosversion);
+        localStorage.setItem(acceptedPrivacyPolicyVersion, user.privacyPolicyVersion);
+      }
       if (this.user && (user.privacyPolicyVersion !== this.currentPrivacyPolicyVersion || user.tosversion !== this.currentTOSVersion)) {
         this.logOutUsersWithoutCurrentTOS();
       }

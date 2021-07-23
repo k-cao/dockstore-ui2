@@ -1109,3 +1109,7 @@ hr {
 .mat-radio-button .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
   top: 1.8em;
 }
+
+.mat-checkbox.text-wrap > label.mat-checkbox-layout {
+  white-space: normal;
+}

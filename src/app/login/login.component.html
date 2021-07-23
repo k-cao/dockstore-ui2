@@ -43,6 +43,8 @@
                 mat-raised-button
                 matTooltip="Log in with GitHub account"
                 (click)="loginWith('github')"
+                [disabled]="loginDisabled"
+                data-cy="login-with-github"
               >
                 <fa-icon [icon]="faGithub"></fa-icon> Login with GitHub
               </button>
@@ -54,13 +56,14 @@
                 mat-raised-button
                 matTooltip="Log in with Google account"
                 (click)="loginWith('google')"
+                [disabled]="loginDisabled"
+                data-cy="login-with-google"
               >
                 <fa-icon [icon]="faGoogle"></fa-icon> Login with Google
               </button>
-              <p>
-                By clicking Login with GitHub or Login with Google, you agree to Dockstore's
-                <template [ngTemplateOutlet]="PrivacyAndTOSDisclaimer"></template>
-              </p>
+              <mat-checkbox class="text-wrap" *ngIf="mustAcceptCurrentTOS" (change)="loginDisabled = !loginDisabled">
+                You must accept Dockstore's current <template [ngTemplateOutlet]="PrivacyAndTOSDisclaimer"></template
+              ></mat-checkbox>
             </mat-card>
           </mat-tab>
           <mat-tab label="Register">
@@ -72,6 +75,8 @@
                 mat-raised-button
                 matTooltip="Register with GitHub account"
                 (click)="registerWith('github')"
+                [disabled]="registrationDisabled"
+                data-cy="register-with-github"
               >
                 <fa-icon [icon]="faGithub"></fa-icon> Register with GitHub
               </button>
@@ -83,14 +88,14 @@
                 mat-raised-button
                 matTooltip="Register with Google account"
                 (click)="registerWith('google')"
+                [disabled]="registrationDisabled"
+                data-cy="register-with-google"
               >
                 <fa-icon [icon]="faGoogle"></fa-icon> Register with Google
               </button>
-              <p>
-                By clicking Register with GitHub or Register with Google, you agree to Dockstore's
-                <template [ngTemplateOutlet]="PrivacyAndTOSDisclaimer"></template>
-              </p>
-
+              <mat-checkbox class="text-wrap" (change)="registrationDisabled = !registrationDisabled"
+                >I agree to the <template [ngTemplateOutlet]="PrivacyAndTOSDisclaimer"></template
+              ></mat-checkbox>
               <!-- Attempt at using  -->
               <!-- <mat-icon svgIcon="google"></mat-icon> -->
               <!-- <a class="btn btn-block btn-social btn-real-google" matTooltip="Register with Google account" (click)="registerWith('google')">
